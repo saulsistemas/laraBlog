@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
 
 class PostController extends Controller
 {
@@ -64,5 +66,9 @@ class PostController extends Controller
                 ->paginate(2);
         #return $posts;
         return view('post.category',compact('posts','category'));
+    }
+    public function tag(Tag $tag){
+        $posts =$tag->posts()->where('status',2)->latest('id')->paginate(4);
+        return view('post.tag',compact('posts','tag'));
     }
 }

@@ -27,9 +27,15 @@ class PostController extends Controller
     }
 
 
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        $similares = Post::where('category_id', $post->category_id)
+                           ->where('status',2)
+                           ->where('id','!=',$post->id)
+                           ->latest('id')
+                           ->take(4)
+                           ->get();
+        return view('post.show',compact('post','similares'));
     }
 
   

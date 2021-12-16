@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Crear nueva Etiqueta</h1>
+    <h1>Crear nuevo Post</h1>
 @stop
 
 @section('content')
@@ -14,8 +14,8 @@
 @endif
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route'=>'admin.tags.store']) !!}
-                @include('admin.tags.partials.form')
+            {!! Form::open(['route'=>'admin.tags.store','autocomplete'=>'off']) !!}
+                @include('admin.posts.partials.form')
                 {!! Form::submit('Guardar',['class'=>'btn btn-success']) !!}             
             {!! Form::close() !!}
         </div>
@@ -24,6 +24,7 @@
 
 @section('js')
     <script src="{{ asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
     <script>
 $(document).ready( function() {
   $("#name").stringToSlug({
@@ -32,5 +33,17 @@ $(document).ready( function() {
     space: '-'
   });
 });
+
+ClassicEditor
+.create( document.querySelector( '#extract' ) )
+.catch( error => {
+    console.error( error );
+} );
+
+ClassicEditor
+.create( document.querySelector( '#body' ) )
+.catch( error => {
+    console.error( error );
+} );
     </script>
 @endsection

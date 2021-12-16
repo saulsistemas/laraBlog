@@ -3,6 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
+    <a href="{{ route('admin.posts.create') }}" class="btn btn-success float-right">Agregar</a>
     <h1>Lista de Posts</h1>
 @stop
 
@@ -12,11 +13,6 @@
         <strong>{{session('info')}}</strong>
     </div>
 @endif
-    <div class="card">
-        <div class="card-header">
-            <a href="{{ route('admin.posts.create') }}" class="btn btn-success">Agregar</a>
-            @livewire('admin.post-index')
-        </div>
-      
-    </div>
+    @livewire('admin.post-index')
+   
 @stop

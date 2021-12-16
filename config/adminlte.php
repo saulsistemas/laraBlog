@@ -304,22 +304,18 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'OPCIONES DE BLOG'],
         [
-            'text'       => 'important',
+            'text'       => 'Lista de Post',
             'icon_color' => 'red',
-            'url'        => '#',
+            'route'        => 'admin.posts.index',
         ],
         [
-            'text'       => 'warning',
+            'text'       => 'Crear nuevo Post',
             'icon_color' => 'yellow',
-            'url'        => '#',
+            'route'        => 'admin.posts.create',
         ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+       
     ],
 
     /*
@@ -474,5 +470,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

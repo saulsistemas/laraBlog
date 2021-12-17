@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-
+    #asignacion masiva
+    #protected $fillable=['name','slug'];
+    protected $guarded=['id','created_at','updated_at'];
     #relacion 1 a muchos inversa
     public function user(){
         return $this->belongsTo(User::class);

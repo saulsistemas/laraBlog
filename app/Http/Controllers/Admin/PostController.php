@@ -8,6 +8,8 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\StorePostRequest;
+
 class PostController extends Controller
 {
 
@@ -26,9 +28,13 @@ class PostController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        return view('admin.tags.index',compact('tag'));
+        $post=Post::create($request->all());
+        if ($request->tags) {
+            $post->tags()->attach($request->tags);
+        }
+        return view('admin.posts.edit',compact('post'));
     }
 
  

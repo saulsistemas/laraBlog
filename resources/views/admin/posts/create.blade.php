@@ -14,7 +14,7 @@
 @endif
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route'=>'admin.tags.store','autocomplete'=>'off']) !!}
+            {!! Form::open(['route'=>'admin.posts.store','autocomplete'=>'off']) !!}
                 @include('admin.posts.partials.form')
                 {!! Form::submit('Guardar',['class'=>'btn btn-success']) !!}             
             {!! Form::close() !!}

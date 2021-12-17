@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Requests\StorePostRequest;
 
@@ -30,7 +31,16 @@ class PostController extends Controller
 
     public function store(StorePostRequest $request)
     {
+        
+        
         $post=Post::create($request->all());
+        if ($request->file('file')) {
+            $ruta='public/posts';
+            $url =Storage::put($ruta,$request->file('file'));
+            $post->image()->create([
+                'url'=>$url,
+            ]);
+        }
         if ($request->tags) {
             $post->tags()->attach($request->tags);
         }

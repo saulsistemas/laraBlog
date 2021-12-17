@@ -50,6 +50,23 @@
     <span class="text-danger">{{$message}}</span>
     @enderror   
 </div>  
+<div class="row mb-3">
+    <div class="col">
+        <div class="img-wrapper">
+            <img id="picture" src="https://cdn.pixabay.com/photo/2021/11/08/14/17/europe-6779227_960_720.jpg" alt="">
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-group">
+            {!! Form::label('file','Imagen:',['class'=>'otro']) !!}
+            {!! Form::file('file',['class'=>'form-control-file','accept'=>'image/*']) !!}
+            @error('file')
+            <span class="text-danger">{{$message}}</span>
+            @enderror  
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus praesentium, esse explicabo repudiandae quos libero non consectetur laboriosam provident nostrum, natus officiis neque inventore illum expedita repellat ipsa quasi est?</p>
+        </div>
+    </div>
+</div>
 <div class="form-group">
     {!! Form::label('extract','Extracto:',['class'=>'otro']) !!}
     {!! Form::textarea('extract',null,['class'=>'form-control']) !!}

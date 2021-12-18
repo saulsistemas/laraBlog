@@ -84,7 +84,7 @@ class TagController extends Controller
     public function destroy(Tag $tag)
     {
         $tag->delete();
-        return redirect()->route('admin.tags.index')->with('info','La etiqueta se eliminó con exito');;
+        return redirect()->route('admin.tags.index')->with('info','La etiqueta se eliminó con exito');
     
     }
 }

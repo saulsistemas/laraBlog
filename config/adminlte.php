@@ -261,6 +261,14 @@ return [
             'can'        => 'admin.users.index',
 
         ],
+        [
+            'text'        => 'Lista de Roles',
+            
+            'route'         => 'admin.roles.index',
+            'icon'        => 'fas fa-tachometer-alt fa-fw',
+            'can'        => 'admin.roles.index',
+
+        ],
         ['header' => 'Administrador'],
         [
             'text' => 'Categorías',

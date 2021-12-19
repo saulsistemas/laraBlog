@@ -6,29 +6,28 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr\FuncCall;
 
+
+use Illuminate\Support\Facades\Cache;
 class PostController extends Controller
 {
 
     public function index()
     {
-        $posts = Post::where('status',2)->latest('id')->paginate(8);
+        if (request()->page) {
+            $key ='posts'.request()->page;
+        }else{
+            $key ='posts';
+        }
+        if (Cache::has($key)) {
+            $posts = Cache::get($key);
+        } else {
+            $posts = Post::where('status',2)->latest('id')->paginate(8);
+            Cache::put($key,$posts);
+        }
+        
         return view('post.index',compact('posts'));
     }
-
-
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
 
     public function show(Post $post)
     {
@@ -43,22 +42,6 @@ class PostController extends Controller
     }
 
   
-    public function edit($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        //
-    }
     public function category(Category $category)
     {
         $posts = Post::where('category_id',$category->id)

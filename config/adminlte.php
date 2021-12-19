@@ -251,6 +251,15 @@ return [
             #'url'         => 'admin/',
             'route'         => 'admin.home',
             'icon'        => 'fas fa-tachometer-alt fa-fw',
+            'can'        => 'admin.home',
+        ],
+        [
+            'text'        => 'Usuarios',
+            #'url'         => 'admin/',
+            'route'         => 'admin.users.index',
+            'icon'        => 'fas fa-tachometer-alt fa-fw',
+            'can'        => 'admin.users.index',
+
         ],
         ['header' => 'Administrador'],
         [
@@ -258,12 +267,16 @@ return [
             'route'  => 'admin.categories.index',
             'icon' => 'fas fa-fw fa-user',
             'active' => ['admin/categories*'],
+            'can'        => 'admin.categories.index',
+
         ],
         [
             'text' => 'Etiquetas',
             'route'  => 'admin.tags.index',
             'icon' => 'fas fa-fw fa-lock',
             'active' => ['admin/tags*'],
+            'can'        => 'admin.tags.index',
+
 
         ],
         [
@@ -309,11 +322,15 @@ return [
             'text'       => 'Lista de Post',
             'icon_color' => 'red',
             'route'        => 'admin.posts.index',
+            'can'        => 'admin.posts.index',
+
         ],
         [
             'text'       => 'Crear nuevo Post',
             'icon_color' => 'yellow',
             'route'        => 'admin.posts.create',
+            'can'        => 'admin.posts.create',
+
         ],
        
     ],
